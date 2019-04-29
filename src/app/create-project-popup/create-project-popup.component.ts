@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, NgForm } from '@angular/forms';
+import { ProjectService } from '../services/project.service';
 
 export interface Category {
   value: string;
@@ -14,13 +15,14 @@ export interface Category {
 })
 export class CreateProjectPopupComponent implements OnInit {
 
-  constructor(public dailogRef: MatDialogRef<CreateProjectPopupComponent>) { }
+  constructor(public dailogRef: MatDialogRef<CreateProjectPopupComponent>,private service: ProjectService) { }
 
    onNoClick() {
    this.dailogRef.close()
   }
 
   ngOnInit() {
+    this.resetForm();
   }
 
   //categoryControl = new FormControl('', [Validators.required]);
@@ -30,4 +32,29 @@ export class CreateProjectPopupComponent implements OnInit {
       {value: 'pizza-1', viewValue: 'Pizza'},
       {value: 'tacos-2', viewValue: 'Tacos'}
   ];
+
+
+
+  onSubmit(form : NgForm)
+  {
+    this.insertRecord(form);
+  }
+
+  insertRecord(form : NgForm)
+  {
+    this.service.postProjectDetails(form.value).subscribe(res=> {
+      this.resetForm(form)
+    });
+  }
+  resetForm(form? : NgForm)
+  {
+    form.resetForm();
+    this.service.formData = {
+      ProjectId: null,
+    ProjectName: '',
+    ProjectDescription: '',
+    ProjectDate: null,
+    CategoryID: null
+    }
+  }
 }

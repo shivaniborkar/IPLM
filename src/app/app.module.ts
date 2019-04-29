@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http' ;
 
 
 import { MatInputModule } from '@angular/material/input';
@@ -34,6 +35,7 @@ import { ProjectFlowchartComponent } from './project-flowchart/project-flowchart
 import { ProjectFlowchart1Component } from './project-flowchart1/project-flowchart1.component';
 import { ProjectFlowchartPopupComponent } from './project-flowchart-popup/project-flowchart-popup.component';
 import { MatSidenavModule} from '@angular/material';
+import { ProjectService } from './services/project.service';
 
 
 @NgModule({
@@ -68,8 +70,10 @@ import { MatSidenavModule} from '@angular/material';
     MatSelectModule, 
     MatStepperModule,  
     MatSidenavModule,
+    HttpClientModule,
  
     AppRoutingModule
+  
   ],
   entryComponents: [
     CreateProjectPopupComponent
