@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../model/project.model';
 import { HttpClient } from '@angular/common/http' ;
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { HttpClient } from '@angular/common/http' ;
 export class ProjectService {
 
   formData: Project;
+  list: Project[];
  
   readonly rootURL = "http://localhost:2228/api";
   constructor(private service: ProjectService, private http: HttpClient) { 
@@ -17,5 +19,9 @@ export class ProjectService {
   postProjectDetails  (formData : Project)
   {
      return this.http.post(this.rootURL + '/Project_Details', formData );
+  }
+
+   refreshList():Observable<Project[]>{
+      return this.http.get<Project[]>(this.rootURL+'/Project_Details'); 
   }
 }
