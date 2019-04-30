@@ -36,6 +36,17 @@ import { ProjectFlowchart1Component } from './project-flowchart1/project-flowcha
 import { ProjectFlowchartPopupComponent } from './project-flowchart-popup/project-flowchart-popup.component';
 import { MatSidenavModule} from '@angular/material';
 import { ProjectService } from './services/project.service';
+import { RouterModule, Routes } from '@angular/router';
+
+
+const appRoutes: Routes = [
+  {
+    path: 'projects/projectsflowchart',
+    component: ProjectFlowchart1Component,
+    
+  },
+ 
+];
 
 
 @NgModule({
@@ -72,7 +83,8 @@ import { ProjectService } from './services/project.service';
     MatSidenavModule,
     HttpClientModule,
  
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   
   ],
   entryComponents: [
