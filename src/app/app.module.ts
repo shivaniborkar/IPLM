@@ -45,7 +45,16 @@ const appRoutes: Routes = [
     component: ProjectFlowchart1Component,
     
   },
- 
+  {
+    path: 'projects',
+    component:HomeComponent ,
+    
+  },
+  {
+    path: 'projects/create',
+    component: CreateProjectPopupComponent,
+    
+  },
 ];
 
 

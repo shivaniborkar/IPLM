@@ -28,14 +28,15 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+    
     this.service.refreshList().subscribe((data:Project[]) => 
       {
         this.projects = data;
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  
     console.log(this.projects);
   }
 
