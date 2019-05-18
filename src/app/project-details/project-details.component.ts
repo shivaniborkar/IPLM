@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -18,7 +18,8 @@ import { Route, Router } from '@angular/router';
 export class ProjectDetailsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'date'];
   dataSource: MatTableDataSource<Project>;
-  projects: Project[];
+ projects: Project[];
+  @Input() categoryID : number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -38,6 +39,7 @@ export class ProjectDetailsComponent implements OnInit {
       });
   
     console.log(this.projects);
+    console.log(this.categoryID);
   }
 
   applyFilter(filterValue: string) {
@@ -48,7 +50,19 @@ export class ProjectDetailsComponent implements OnInit {
     }
   }
 
-  onClick(){
+  onClickRow(){
    //this._router.navigate(['projects/projectsflowchart']);
+  
+  }
+
+  handleNotify(eventData: number){
+    this.service.refreshList().subscribe((data:Project[]) => 
+    {
+      this.projects = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+
   }
 }

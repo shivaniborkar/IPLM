@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog, MatIconRegistry, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { CreateProjectPopupComponent } from '../create-project-popup/create-project-popup.component';
-import { ProjectDetailsComponent } from '../project-details/project-details.component';
-import { Project } from '../model/project.model';
+
 import { ProjectService } from '../services/project.service';
 
 
@@ -13,9 +12,10 @@ import { ProjectService } from '../services/project.service';
 })
 export class FilterProjectsComponent implements OnInit {
   
-  showFiller = false;
-  projects: Project[];
-  dataSource: MatTableDataSource<Project>;
+  isAllSelected = false;
+
+
+
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -30,16 +30,8 @@ export class FilterProjectsComponent implements OnInit {
 
   loadAll(){
 
-    this.service.refreshList().subscribe((data:Project[]) => 
-      {
-        
-        
-        this.projects= data;      
-         this.dataSource = new MatTableDataSource(data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }); 
-    
+    this.isAllSelected = true;
   }
+
   
 }

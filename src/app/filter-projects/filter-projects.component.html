@@ -9,10 +9,18 @@
 
        
         <div class="filter">
-            <div>
+
+           <div>
                 <button class="create-button" (click)=createProject()>Create Project</button>
-            </div>
-           <button class="button" style="vertical-align:middle" (click)=loadAll()><span>All </span></button>
+           </div>
+
+           <button class="button" style="vertical-align:middle" (click)=loadAll()><span>All </span>
+            <div *ngIf=isAllSelected> 
+                <project-details [categoryID]="2"></project-details> 
+            </div>            
+          
+           </button>
+
            <button class="button" style="vertical-align:middle" (click)=onClick()><span>Scounting Round </span></button>
            <button class="button" style="vertical-align:middle" (click)=onClick()><span>Prestudy</span></button>
            <button class="button" style="vertical-align:middle" (click)=onClick()><span>DeepDive</span></button>
@@ -30,7 +38,6 @@
 
 
     </mat-drawer>
-  
     
   
   </mat-drawer-container>
