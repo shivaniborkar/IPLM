@@ -1,0 +1,75 @@
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { ProjectService } from '../services/project.service';
+import { observable, Observable } from 'rxjs';
+import { Project } from '../model/project.model';
+import { ProjectFlowchart1Component } from '../project-flowchart1/project-flowchart1.component';
+import { Route, Router } from '@angular/router';
+import {DataService} from '../services/data.service';
+
+
+
+@Component({
+  selector: 'projects-list',
+  templateUrl: './projects-list.component.html',
+  styleUrls: ['./projects-list.component.css']
+})
+export class ProjectsListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'description', 'date'];
+  dataSource: MatTableDataSource<Project>;
+  projects: Project[];
+  @Input() categoryID : number;
+  selectedProjectID: number = 122
+  isProjectSelected: boolean = false
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private service : ProjectService, private _router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.service.refreshList().subscribe((data:Project[]) =>
+      {
+        this.projects = data;
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+
+    console.log(this.projects);
+    console.log(this.categoryID);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  onClickRow(){
+   //this._router.navigate(['projects/projectsflowchart']);
+
+  }
+
+  handleNotify(eventData: number){
+    this.service.refreshList().subscribe((data:Project[]) =>
+    {
+      this.projects = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+
+  }
+
+  triggerProject() {
+    this.isProjectSelected = true;
+   // this.router.navigateByUrl('/projects/');
+  }
+}

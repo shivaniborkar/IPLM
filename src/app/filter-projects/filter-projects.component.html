@@ -1,44 +1,26 @@
-<div class="example-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()" class="toggle-button">
-           Open Filter 
-        </button>
-      </div> 
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        
+<div class="filter">
+  <div>
+    <button class="create-button" (click)=createProject()>Create Project</button>
+  </div>
 
-       
-        <div class="filter">
+           <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>All </span>
+             <!--      <div *ngIf=isAllSelected>
+                       <projects-list [categoryID]="2"></projects-list>
+                   </div>-->
 
-           <div>
-                <button class="create-button" (click)=createProject()>Create Project</button>
-           </div>
+                  </button>
 
-           <button class="button" style="vertical-align:middle" (click)=loadAll()><span>All </span>
-            <div *ngIf=isAllSelected> 
-                <project-details [categoryID]="2"></project-details> 
-            </div>            
-          
-           </button>
-
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Scounting Round </span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Prestudy</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>DeepDive</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Concept Study1</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Question0 </span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Contract</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>KickOff</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Concept Study2</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Application Study </span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Handover</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Pitch</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Development</span></button>
-           <button class="button" style="vertical-align:middle" (click)=onClick()><span>Product</span></button>
-        </div>
-
-
-    </mat-drawer>
-    
-  
-  </mat-drawer-container>
- 
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Scounting Round </span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Prestudy</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>DeepDive</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Concept Study1</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Question0 </span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Contract</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>KickOff</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Concept Study2</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Application Study </span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Handover</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Pitch</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Development</span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Product</span></button>
+</div>

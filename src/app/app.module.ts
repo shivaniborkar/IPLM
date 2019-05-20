@@ -30,32 +30,34 @@ import { FilterProjectsComponent } from './filter-projects/filter-projects.compo
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectDocumentsComponent } from './project-documents/project-documents.component';
 import { from } from 'rxjs';
-import { CreateProjectPopupComponent } from './create-project-popup/create-project-popup.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 import { ProjectFlowchartComponent } from './project-flowchart/project-flowchart.component';
 import { ProjectFlowchart1Component } from './project-flowchart1/project-flowchart1.component';
 import { ProjectFlowchartPopupComponent } from './project-flowchart-popup/project-flowchart-popup.component';
 import { MatSidenavModule} from '@angular/material';
 import { ProjectService } from './services/project.service';
 import { RouterModule, Routes } from '@angular/router';
+import {DataService} from './services/data.service';
+import {ProjectsListComponent} from './projects-list/projects-list.component';
 
 
-const appRoutes: Routes = [
+/*const appRoutes: Routes = [
   {
     path: 'projects/projectsflowchart',
     component: ProjectFlowchart1Component,
-    
+
   },
   {
     path: 'projects',
     component:HomeComponent ,
-    
+
   },
   {
     path: 'projects/create',
     component: CreateProjectPopupComponent,
-    
+
   },
-];
+];*/
 
 
 @NgModule({
@@ -67,15 +69,16 @@ const appRoutes: Routes = [
     FilterProjectsComponent,
     ProjectDetailsComponent,
     ProjectDocumentsComponent,
-    CreateProjectPopupComponent,
+    CreateProjectComponent,
     ProjectFlowchartComponent,
     ProjectFlowchart1Component,
-    ProjectFlowchartPopupComponent
+    ProjectFlowchartPopupComponent,
+    ProjectsListComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,   
+    FormsModule,
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
@@ -87,19 +90,19 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSelectModule, 
-    MatStepperModule,  
+    MatSelectModule,
+    MatStepperModule,
     MatSidenavModule,
     HttpClientModule,
- 
-    AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
-  
+
+    AppRoutingModule
+   // RouterModule.forRoot(appRoutes)
+
   ],
   entryComponents: [
-    CreateProjectPopupComponent
+    CreateProjectComponent
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

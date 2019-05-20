@@ -1,14 +1,5 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { ProjectService } from '../services/project.service';
-import { observable, Observable } from 'rxjs';
-import { Project } from '../model/project.model';
-import { ProjectFlowchart1Component } from '../project-flowchart1/project-flowchart1.component';
-import { Route, Router } from '@angular/router';
-
-
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'project-details',
@@ -16,53 +7,26 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./project-details.component.css']
 })
 export class ProjectDetailsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'description', 'date'];
-  dataSource: MatTableDataSource<Project>;
- projects: Project[];
-  @Input() categoryID : number;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  profileForm: FormGroup;
+  showFiller = false;
+  @Input() selectedProjectID: number
 
-  constructor(private service : ProjectService, private _router: Router) {
-    
-  }
+  constructor() { }
 
   ngOnInit() {
-    
-    this.service.refreshList().subscribe((data:Project[]) => 
-      {
-        this.projects = data;
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
-  
-    console.log(this.projects);
-    console.log(this.categoryID);
-  }
+      }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  onSelectedFile(event) {
+    if (event.target.files.lenght > 0) {
+      const profile = event.target.files[0];
+      this.profileForm.get('profile').setValue(profile);
     }
   }
 
-  onClickRow(){
-   //this._router.navigate(['projects/projectsflowchart']);
-  
-  }
-
-  handleNotify(eventData: number){
-    this.service.refreshList().subscribe((data:Project[]) => 
-    {
-      this.projects = data;
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('name', this.profileForm.get('name').value);
+    formData.append('name', this.profileForm.get('profile').value);
   }
 }

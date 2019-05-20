@@ -1,21 +1,64 @@
-.navbar-default {
-    background-color: rgba(42, 44, 44, 0.651);
-    
-}
-  
-  table {
-    width: 100%;
-  }
-    
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-    
-  td, th {
-    width: 25%;
-  }
 
-  .pointerCursor {
-    cursor: pointer;
-  }
+.flowchart-panel {
+  width: 70%;
+  float: left;
+}
+.document-upload-panel {
+  width: 25%;
+  float: right;
+}
+
+.project-title {
+  text-align: center;
+}
+.delete-document {
+text-decoration: none;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+position: relative;
+float: right;
+}
+
+.file-upload {
+  width: 100%;
+  padding: 2px;
+}
+
+
+
+.example-container {
+  width: 240px;
+  height: 800px;
+
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: right;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.button {
+  background-color: rgba(137, 141, 128, 0.658); /* Green */
+  border: none;
+  color: rgb(10, 10, 10);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 5px 2px;
+  margin-left: 17%;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
