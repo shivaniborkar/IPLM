@@ -8,7 +8,8 @@
 
   <div class="mat-elevation-z8 pointerCursor" >
     <div (click)="onClick()" >
-    <table mat-table [dataSource]="dataSource" matSort onclick="onClickRow()">
+        {{projectIDNumber}}
+    <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- ID Column -->
       <ng-container matColumnDef="id" >

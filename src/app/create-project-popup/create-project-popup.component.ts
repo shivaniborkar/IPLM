@@ -5,7 +5,7 @@ import { ProjectService } from '../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Category {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
@@ -30,9 +30,9 @@ export class CreateProjectPopupComponent implements OnInit {
   //categoryControl = new FormControl('', [Validators.required]);
     
     category: Category[] = [
-      {value: 'steak-0', viewValue: 'Steak'},
-      {value: 'pizza-1', viewValue: 'Pizza'},
-      {value: 'tacos-2', viewValue: 'Tacos'}
+      {value: 1, viewValue: 'Steak'},
+      {value: 2, viewValue: 'Pizza'},
+      {value: 3, viewValue: 'Tacos'}
   ];
 
 

@@ -52,7 +52,10 @@ export class ProjectsListComponent implements OnInit {
     }
   }
 
-  onClickRow(){
+  onClick(){
+
+  //  this.isProjectSelected = true;
+  //  this.selectedProjectID = projectIDNumber;
    //this._router.navigate(['projects/projectsflowchart']);
 
   }
