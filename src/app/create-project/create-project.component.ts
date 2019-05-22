@@ -30,8 +30,18 @@ export class CreateProjectComponent implements OnInit {
 
    category: Category[] = [
     {value: 1, viewValue: 'Scouting Round'},
-    {value: 2, viewValue: 'Pizza'},
-    {value: 3, viewValue: 'Tacos'}
+    {value: 2, viewValue: 'Prestudy'},
+    {value: 3, viewValue: 'DeepDive'},
+    {value: 4, viewValue: 'Conceptstudy1'},
+    {value: 5, viewValue: 'Questionzero'},
+    {value: 6, viewValue: 'Contract'},
+    {value: 7, viewValue: 'Kickoff'},
+    {value: 8, viewValue: 'Conceptstudy2'},
+    {value: 9, viewValue: 'Applicationstudy'},
+    {value: 10, viewValue: 'Handover'},
+    {value: 11, viewValue: 'Pitch'},
+    {value: 12, viewValue: 'Development'},
+    {value: 13, viewValue: 'Product'}
 ];
 
 
@@ -61,4 +71,5 @@ resetForm(form? : NgForm)
      CategoryID: null
    }
 }
+
 }

@@ -1,5 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'project-details',
@@ -8,11 +11,126 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class ProjectDetailsComponent implements OnInit {
 
+//document upload code
+errorMessage: string;
+filesToUpload: Array<File>;
+selectedFileNames: string[] = [];
+public isLoadingData: Boolean = false;
+@ViewChild('fileUpload') fileUploadVar: any;
+uploadResult: any;
+res: Array<string>;
+
+
+
+
   profileForm: FormGroup;
   showFiller = false;
   @Input() selectedProjectID: number
 
-  constructor() { }
+
+
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.errorMessage = "";
+    this.filesToUpload = [];
+    this.selectedFileNames = [];
+    this.uploadResult = "";
+   }
+
+   fileChangeEvent(fileInput: any)
+   {
+       //Clear Uploaded Files result message
+       this.uploadResult = "";
+       this.filesToUpload = <Array<File>>fileInput.target.files;
+
+       for (let i = 0; i < this.filesToUpload.length; i++)
+       {
+           this.selectedFileNames.push(this.filesToUpload[i].name);
+       }
+   }
+
+   cancelUpload()
+   {
+       this.filesToUpload = [];
+       this.fileUploadVar.nativeElement.value = "";
+       this.selectedFileNames = [];
+       this.uploadResult = "";
+       this.errorMessage = "";
+   }
+
+   upload()
+   {
+       if (this.filesToUpload.length == 0)
+       {
+           alert('Please select at least 1 PDF files to upload!');
+       }
+       else if (this.filesToUpload.length > 3) {
+           alert('Please select a maximum of 3 PDF files to upload!');
+       }
+       else
+       {
+           if (this.validatePDFSelectedOnly(this.selectedFileNames))
+           {
+               this.uploadFiles();
+           }
+       }
+   }
+
+   validatePDFSelectedOnly(filesSelected: string[])
+   {
+       for (var i = 0; i < filesSelected.length; i++)
+       {
+           if (filesSelected[i].slice(-3).toUpperCase() != "PDF")
+           {
+               alert('Please selecte PDF files only!');
+               return false;
+           }
+           else {
+               return true;
+           }
+       }
+   }
+
+   uploadFiles()
+   {
+       this.uploadResult = "";
+
+       if (this.filesToUpload.length > 0)
+       {
+           this.isLoadingData = true;
+
+           let formData: FormData = new FormData();
+
+           for (var i = 0; i < this.filesToUpload.length; i++)
+           {
+               formData.append('Resources/Documents', this.filesToUpload[i], this.filesToUpload[i].name);
+           }
+
+           let apiUrl = "/api/Upload/UploadFiles";
+
+           this.http.post(apiUrl, formData).pipe(map((res: Response) => res.json()))               
+               .subscribe
+               (
+                   data => {
+                       this.uploadResult = data;
+                       this.errorMessage = "";
+                   },
+                   err => {
+                       console.error(err);
+                       this.errorMessage = err;
+                       this.isLoadingData = false;
+                   },
+                   () => {
+                       this.isLoadingData = false,
+                           this.fileUploadVar.nativeElement.value = "";
+                       this.selectedFileNames = [];
+                       this.filesToUpload = [];
+                   }
+               );
+       }
+   }
+
+
 
   ngOnInit() {
       }

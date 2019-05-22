@@ -34,7 +34,8 @@ export class ProjectsListComponent implements OnInit {
   ngOnInit() {
     this.service.refreshList().subscribe((data:Project[]) =>
       {
-        this.projects = data;
+        
+        this.projects = data.filter(data => data.CategoryID == this.categoryID );
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -54,8 +55,8 @@ export class ProjectsListComponent implements OnInit {
 
   onClick(){
 
-  //  this.isProjectSelected = true;
-  //  this.selectedProjectID = projectIDNumber;
+    this.isProjectSelected = true;
+   this.selectedProjectID = 1;
    //this._router.navigate(['projects/projectsflowchart']);
 
   }
@@ -63,6 +64,7 @@ export class ProjectsListComponent implements OnInit {
   handleNotify(eventData: number){
     this.service.refreshList().subscribe((data:Project[]) =>
     {
+
       this.projects = data;
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

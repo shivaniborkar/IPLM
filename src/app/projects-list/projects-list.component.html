@@ -7,10 +7,10 @@
   </mat-form-field>
 
   <div class="mat-elevation-z8 pointerCursor" >
-    <div (click)="onClick()" >
+    
+      
+    <table mat-table [dataSource]="dataSource" matSort (click)="onClick()" >
         {{projectIDNumber}}
-    <table mat-table [dataSource]="dataSource" matSort>
-
       <!-- ID Column -->
       <ng-container matColumnDef="id" >
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -43,7 +43,7 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
-  </div>
+
   </div>
 
 

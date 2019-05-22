@@ -15,7 +15,7 @@ import {DataService} from '../services/data.service';
 export class FilterProjectsComponent implements OnInit {
 
   isAllSelected = false;
-
+  categoryID : number = 0
 
 
 
@@ -34,8 +34,13 @@ export class FilterProjectsComponent implements OnInit {
 
     this.isAllSelected = true;
   }
+
   loadProjectList() {
    // this.data.;
+}
+
+loadProjectListScouting(){
+  this.categoryID = 1;
 }
 
 }

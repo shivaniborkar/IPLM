@@ -21,9 +21,10 @@
   </mat-form-field>
 
   <mat-form-field class="input-element">
-    <mat-select placeholder="Category">
+    <mat-select placeholder="Category" name="CategoryID" 
+    #CategoryID="ngModel" [(ngModel)]="service.formData.CategoryID" >
         <mat-option *ngFor="let cat of category" [value]="cat.value">
-            {{cat.value}}
+            {{cat.viewValue}}
           </mat-option>
     </mat-select>
   </mat-form-field>

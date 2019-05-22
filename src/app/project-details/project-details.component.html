@@ -11,7 +11,22 @@
 <div class="document-upload-panel">
         <h3>Documents Uploaded </h3>
     <div class="file-upload">
-      <input type="file" id="file_upload">
+                      <input type="file" id="file_upload" (change)="fileChangeEvent($event)">
+                      <button type="button" (click)="upload()">Upload</button>
+                <button type="button" (click)="cancelUpload()">Cancel</button>
+                <div *ngIf="filesToUpload?.length > 0"><br /><p>{{filesToUpload?.length}} files selected : </p></div>
+
+                <ul>
+                    <li *ngFor="let fileName of selectedFileNames; let i = index">
+                        {{fileName}}
+                    </li>
+                </ul>
+
+                <div [innerHtml]="uploadResult"></div>
+
+                <div style="color:red">
+                    {{errorMessage}}
+                </div>
     </div>
       <div>
         <mat-card>

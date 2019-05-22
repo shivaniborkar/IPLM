@@ -10,7 +10,10 @@
 
                   </button>
 
-  <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Scounting Round </span></button>
+  <button class="button" style="vertical-align:middle" (click)=loadProjectListScouting()><span>Scounting Round </span></button>
+  <div *ngIf="categoryID==='1'">
+      <projects-list [categoryID]="categoryID"></projects-list>
+    </div>
   <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Prestudy</span></button>
   <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>DeepDive</span></button>
   <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Concept Study1</span></button>
@@ -24,3 +27,4 @@
   <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Development</span></button>
   <button class="button" style="vertical-align:middle" (click)=loadProjectList()><span>Product</span></button>
 </div>
+
