@@ -1,38 +1,39 @@
-
+ 
 <div *ngIf="!isProjectSelected">
-  <input type="button" name="button" (click)="triggerProject()">
-  {{projectIDNumber}}
+ 
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Project">
+    <input matInput (keyup)="applyFilter($event.target.value)" (focus)="setupFilter('id','description','name')" placeholder="Search Project">
   </mat-form-field>
 
   <div class="mat-elevation-z8 pointerCursor" >
     
       
-    <table mat-table [dataSource]="dataSource" matSort (click)="onClick()" >
-        {{projectIDNumber}}
+    <table mat-table [dataSource]="dataSource" matSort  >
+     
       <!-- ID Column -->
+      
+
       <ng-container matColumnDef="id" >
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.ProjectId}} </td>
+        <td mat-cell *matCellDef="let row" (click)="triggerProject(row.ProjectId)"> {{row.ProjectId}} </td>
       </ng-container>
 
       <!-- Progress Column -->
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Description </th>
-        <td mat-cell *matCellDef="let row"> {{row.ProjectDescription}} </td>
+        <td mat-cell *matCellDef="let row" (click)="triggerProject(row.ProjectId)"> {{row.ProjectDescription}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.ProjectName}} </td>
+        <td mat-cell *matCellDef="let row" (click)="triggerProject(row.ProjectId)"> {{row.ProjectName}} </td>
       </ng-container>
 
       <!-- Color Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-        <td mat-cell *matCellDef="let row" > {{row.ProjectDate}} </td>
+        <td mat-cell *matCellDef="let row" (click)="triggerProject(row.ProjectId)"> {{row.ProjectDate}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

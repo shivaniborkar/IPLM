@@ -22,7 +22,7 @@ export class ProjectService {
   }
 
   refreshList():Observable<Project[]>{
-      return this.http.get<Project[]>(this.rootURL+'/Project_Details'); 
+      return this.http.get<Project[]>(this.rootURL+'/Project_Details/'); 
   }
 
   

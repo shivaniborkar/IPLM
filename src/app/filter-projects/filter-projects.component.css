@@ -4,7 +4,7 @@
     background: white;
 }
 .create-button {
-  background-color: #3F51B5; /* Green */
+  background-color: rgba(137, 141, 128, 0.993) /* Green */;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -26,7 +26,7 @@
 
   display: inline-block;
   border-radius: 4px;
-  background-color: #3F51B5;
+  background-color: rgba(73, 138, 168, 0.897); 
   border: none;
   color: #FFFFFF;
   text-align: center;

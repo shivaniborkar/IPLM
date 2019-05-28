@@ -103,9 +103,9 @@ res: Array<string>;
 
            for (var i = 0; i < this.filesToUpload.length; i++)
            {
-               formData.append('Resources/Documents', this.filesToUpload[i], this.filesToUpload[i].name);
+               formData.append("Resources/Documents", this.filesToUpload[i], this.filesToUpload[i].name);
            }
-
+           let server = "http://localhost:2228"
            let apiUrl = "/api/Upload/UploadFiles";
 
            this.http.post(apiUrl, formData).pipe(map((res: Response) => res.json()))               
