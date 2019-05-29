@@ -38,13 +38,16 @@ export class FilterProjectsComponent implements OnInit {
 
   loadProjectList(categoryID: string) {
   
-    this.router.navigate(['/projects/category/'+categoryID+'/']);
-    
-    
+    this.router.navigate(['/projects/category/'+categoryID+'/'] );     
+    //window.location.reload();   
 }
 
-loadProjectListScouting(){
-  this.categoryID = 1;
-}
+  loadProjectListx(categoryID: string){
+    this.router.navigate(['/projects/projectID/'+categoryID+'/']); 
+  }
+
+  loadProjectListScouting(){
+    this.categoryID = 1;
+  }
 
 }

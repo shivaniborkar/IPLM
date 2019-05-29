@@ -25,10 +25,11 @@ export class ProjectsListComponent implements OnInit {
   selectedProjectID: number = 122
   isProjectSelected: boolean = false
   
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service : ProjectService, private _router: Router,private route: ActivatedRoute) {
+  constructor(private service : ProjectService, private route: ActivatedRoute,private router: Router) {
 
   }
 
@@ -45,11 +46,30 @@ export class ProjectsListComponent implements OnInit {
               {
                 this.categoryID = parseInt(this.categoryIDString)
               }
+              this.refreshProjectList();
             }
           );      
-    this.service.refreshList().subscribe((data:Project[]) =>
-      {
 
+      
+
+    
+
+    console.log(this.categoryID);
+    
+  }
+
+
+ 
+  ngOnChange() {
+    
+    this.refreshProjectList();
+  }
+ 
+
+  refreshProjectList(){
+      this.service.refreshList().subscribe((data:Project[]) =>
+      {
+        this.projects = data;
         if(this.categoryID!=0)
         {
           this.projects = data.filter(data => data.CategoryID == this.categoryID );
@@ -57,15 +77,11 @@ export class ProjectsListComponent implements OnInit {
         else{
           this.projects = data;
         }
-       
+      
         this.dataSource = new MatTableDataSource(this.projects);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
-
-    
-
-    console.log(this.categoryID);
   }
 
   applyFilter(filterValue: string) {
@@ -106,7 +122,8 @@ export class ProjectsListComponent implements OnInit {
 
   triggerProject(projectNumber: number) {
     this.selectedProjectID = projectNumber;
+    
+    this.router.navigate(['/projects/projectID/'+projectNumber+'/']); 
     this.isProjectSelected = true;
-   // this.router.navigateByUrl('/projects/');
   }
 }

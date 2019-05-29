@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -13,6 +13,8 @@ export class ProjectDetailsComponent implements OnInit {
 
 //document upload code
 errorMessage: string;
+projectIDString : string;
+projectID : number;
 filesToUpload: Array<File>;
 selectedFileNames: string[] = [];
 public isLoadingData: Boolean = false;
@@ -30,7 +32,7 @@ res: Array<string>;
 
 
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private route: ActivatedRoute) {
     this.errorMessage = "";
     this.filesToUpload = [];
     this.selectedFileNames = [];
@@ -133,6 +135,20 @@ res: Array<string>;
 
 
   ngOnInit() {
+    this.route.paramMap.subscribe(
+              params => {
+                this.projectIDString = params.get('id');
+                
+                if(this.projectIDString == undefined || this.projectIDString == null)
+                {
+                  this.projectID = 0
+                }
+                else
+                {
+                  this.projectID = parseInt(this.projectIDString)
+                }
+              }
+            );     
       }
 
   onSelectedFile(event) {
