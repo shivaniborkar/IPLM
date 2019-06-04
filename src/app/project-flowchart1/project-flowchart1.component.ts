@@ -13,7 +13,7 @@ export class ProjectFlowchart1Component implements OnInit {
   constructor(public dialog: MatDialog) { }
  
   createProject () {
-    this.dialog.open(ProjectFlowchartPopupComponent)
+   // this.dialog.open(ProjectFlowchartPopupComponent)
   }
 
   ngOnInit() {

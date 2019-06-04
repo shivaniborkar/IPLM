@@ -7,12 +7,13 @@
   background-color:#7de7b259;
   border: none;
   color: black;
-  padding: 15px 32px;
+  padding: 15px 32px; 
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  
   font-size: 16px;
-  margin: 20px 40px;
+  margin: 20px 40px; 
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -28,6 +29,40 @@
     margin-top: 2%;
 }
 
+.deepdive{
+  margin-left: 22%;
+  margin-top: 2%;
+}
+
+.contract{
+  margin-left: 2%;
+  margin-top: 2%; 
+}
+
+.kickoff{
+  margin-left: 22%;
+  margin-top: 2%;
+}
+
+.appstudy{
+  margin-left: 2%;
+  margin-top: 2%; 
+}
+
+.handover{
+  margin-left: 2%;
+  margin-top: 2%; 
+}
+
+.pitch{
+  margin-left: 2%;
+  margin-top: 2%; 
+}
+
+.dev{
+  margin-left: 22%;
+  margin-top: 2%;
+}
 
 .button {
 

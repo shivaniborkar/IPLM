@@ -78,9 +78,13 @@ export class ProjectsListComponent implements OnInit {
           this.projects = data;
         }
       
-        this.dataSource = new MatTableDataSource(this.projects);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        
+          this.dataSource = new MatTableDataSource(this.projects);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        
+        
+       
       });
   }
 
