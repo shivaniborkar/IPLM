@@ -27,6 +27,7 @@ res: Array<string>;
 
   profileForm: FormGroup;
   showFiller = false;
+  
   @Input() selectedProjectID: number
 
 

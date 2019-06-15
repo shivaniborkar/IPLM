@@ -1,6 +1,6 @@
 
 <div class="custom">
-  <button class="create-button scounting" (click)=createProject()>1. Scouting Round</button>
+  <button class="create-button scounting" [disabled]="isDisabled" (click)=createProject()>1. Scouting Round</button>
   <!-- <i class="material-icons">arrow_forward_ios</i>     -->
     
   <button class="create-button deepdive" (click)=createProject()>2. Deep Dive</button>

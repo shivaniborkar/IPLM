@@ -1,19 +1,13 @@
 <div class="filter">
-  <div>
-    <button class="create-button" (click)=createProject()>Create Project</button>
-  </div>
+          <div>
+            <button class="create-button" (click)=createProject()>Create Project</button>
+          </div>
 
            <button class="button" style="vertical-align:middle" (click)='loadProjectList("0")'><span>All </span>
-             <!--      <div *ngIf=isAllSelected>
-                       <projects-list [categoryID]="2"></projects-list>
-                   </div>-->
-
-                  </button>
+            
+           </button>
 
   <button class="button" style="vertical-align:middle" (click)='loadProjectList("1")'><span>Scounting Round </span></button>
-  <!-- <div *ngIf="categoryID==='1'">
-      <projects-list [categoryID]="categoryID"></projects-list>
-    </div> -->
   <button class="button" style="vertical-align:middle" (click)='loadProjectList("2")'><span>Prestudy</span></button>
   <button class="button" style="vertical-align:middle" (click)='loadProjectList("3")'><span>DeepDive</span></button>
   <button class="button" style="vertical-align:middle" (click)='loadProjectList("4")'><span>Concept Study1</span></button>

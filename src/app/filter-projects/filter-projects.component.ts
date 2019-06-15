@@ -28,6 +28,8 @@ export class FilterProjectsComponent implements OnInit {
   createProject () {
     this.dialog.open(CreateProjectComponent)
   }
+
+  
   ngOnInit() {
   }
 

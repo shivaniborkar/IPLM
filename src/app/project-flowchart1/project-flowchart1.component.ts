@@ -9,14 +9,16 @@ import { ProjectFlowchartPopupComponent } from '../project-flowchart-popup/proje
   styleUrls: ['./project-flowchart1.component.css']
 })
 export class ProjectFlowchart1Component implements OnInit {
-
+  isDisabled: boolean = true;
   constructor(public dialog: MatDialog) { }
  
   createProject () {
    // this.dialog.open(ProjectFlowchartPopupComponent)
+   
   }
 
   ngOnInit() {
+    this.isDisabled = true;
   }
 
   
