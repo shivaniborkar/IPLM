@@ -18,11 +18,11 @@ export class ProjectService {
 
   postProjectDetails(formData : Project) 
   {
-     return this.http.post(this.rootURL + '/Project_Details', formData);
+     return this.http.post(this.rootURL + '/Project_Details1', formData);
   }
 
   refreshList():Observable<Project[]>{
-      return this.http.get<Project[]>(this.rootURL+'/Project_Details/'); 
+      return this.http.get<Project[]>(this.rootURL+'/Project_Details1/'); 
   }
 
   

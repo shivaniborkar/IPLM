@@ -68,7 +68,8 @@ resetForm(form? : NgForm)
      ProjectName: '',
      ProjectDescription: '',
      ProjectDate: null,
-     CategoryID: null
+     CategoryID: null,
+     Project_Catchphrases: ''
    }
 }
 

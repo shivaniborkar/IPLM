@@ -28,7 +28,7 @@ res: Array<string>;
   profileForm: FormGroup;
   showFiller = false;
   
-  @Input() selectedProjectID: number
+  @Input() selectedProjectID: number;
 
 
 
@@ -77,6 +77,11 @@ res: Array<string>;
                this.uploadFiles();
            }
        }
+   }
+
+   UploadFile()
+   {
+     return this.http.post("http://localhost:2228/api/FileUploading/uploadFile","");
    }
 
    validatePDFSelectedOnly(filesSelected: string[])

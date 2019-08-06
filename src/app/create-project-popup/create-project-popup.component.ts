@@ -60,7 +60,8 @@ export class CreateProjectPopupComponent implements OnInit {
        ProjectName: '',
        ProjectDescription: '',
        ProjectDate: null,
-       CategoryID: null
+       CategoryID: null,
+       Project_Catchphrases: ''
      }
   }
 }

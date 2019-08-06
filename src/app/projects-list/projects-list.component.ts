@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+
+
+
 import { ProjectService } from '../services/project.service';
 import { observable, Observable } from 'rxjs';
 import { Project } from '../model/project.model';
 import { ProjectFlowchart1Component } from '../project-flowchart1/project-flowchart1.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import {DataService} from '../services/data.service';
+import { MatSort, MatTableDataSource,MatPaginator} from '@angular/material';
 
 
 
@@ -17,7 +18,7 @@ import {DataService} from '../services/data.service';
   styleUrls: ['./projects-list.component.css']
 })
 export class ProjectsListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'description', 'date'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'date', 'catchphrases'];
   dataSource: MatTableDataSource<Project>;
   projects: Project[];
   categoryIDString : string;
@@ -30,8 +31,10 @@ export class ProjectsListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private service : ProjectService, private route: ActivatedRoute,private router: Router) {
-
+  
   }
+
+ 
 
   ngOnInit() {
     this.route.paramMap.subscribe(
@@ -67,9 +70,10 @@ export class ProjectsListComponent implements OnInit {
  
 
   refreshProjectList(){
-      this.service.refreshList().subscribe((data:Project[]) =>
-      {
-        this.projects = data;
+  this.service.refreshList().subscribe((data:Project[]) =>
+  {
+    this.projects = data;
+    
         if(this.categoryID!=0)
         {
           this.projects = data.filter(data => data.CategoryID == this.categoryID );
@@ -78,24 +82,28 @@ export class ProjectsListComponent implements OnInit {
           this.projects = data;
         }
       
-        
-          this.dataSource = new MatTableDataSource(this.projects);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+      
+    this.dataSource = new MatTableDataSource(this.projects);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    
         
         
        
-      });
+  });
   }
 
+  
   applyFilter(filterValue: string) {
     
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
   }
+  }
+
+
 
   // setupFilter(column1: number, column2:string, column3:string) {
   //   this.dataSource.filterPredicate = (data, filter: string) => {
@@ -124,7 +132,11 @@ export class ProjectsListComponent implements OnInit {
 
   } */
 
+
+
+
   triggerProject(projectNumber: number) {
+    
     this.selectedProjectID = projectNumber;
     
     this.router.navigate(['/projects/projectID/'+projectNumber+'/']); 

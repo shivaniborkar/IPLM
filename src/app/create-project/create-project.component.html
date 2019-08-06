@@ -29,6 +29,12 @@
           </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Project Catchphrase"  name="Project_Catchphrases" #Project_Catchphrases="ngModel" 
+    [(ngModel)]="service.formData.Project_Catchphrases">
+  </mat-form-field>
+  
     <button class="button" style="vertical-align:middle" type="submit">Create</button>
 </div>  
 </form>

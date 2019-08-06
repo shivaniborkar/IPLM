@@ -29,5 +29,6 @@ export class ProjectDocumentsComponent implements OnInit {
     const formData= new FormData();
     formData.append('name',this.profileForm.get('name').value);
     formData.append('name',this.profileForm.get('profile').value);
+    
   }
 }

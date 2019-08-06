@@ -1,3 +1,5 @@
+
+
 <div class="flowchart-panel">
   <div class="project-title">
     <h2>Project - {{projectID}}</h2>
@@ -12,7 +14,7 @@
         <h3>Documents Uploaded </h3>
     <div class="file-upload">
                       <input type="file" id="file_upload" (change)="fileChangeEvent($event)">
-                      <button type="button" (click)="upload()">Upload</button>
+                      <button type="button" (click)="UploadFile()">Upload</button>
                 <button type="button" (click)="cancelUpload()">Cancel</button>
                 <div *ngIf="filesToUpload?.length > 0"><br /><p>{{filesToUpload?.length}} files selected : </p></div>
 
