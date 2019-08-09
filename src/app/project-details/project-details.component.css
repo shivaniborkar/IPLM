@@ -1,4 +1,8 @@
 
+.flowchart{
+margin-left: 20px;
+}
+
 .flowchart-panel {
   width: 70%;
   float: left;
