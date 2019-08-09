@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -39,6 +40,7 @@ import { ProjectService } from './services/project.service';
 import { RouterModule, Routes } from '@angular/router';
 import {DataService} from './services/data.service';
 import {ProjectsListComponent} from './projects-list/projects-list.component';
+import { ExpansionStepsExampleComponent } from './expansion-steps-example/expansion-steps-example.component';
 
 
 /*const appRoutes: Routes = [
@@ -73,7 +75,8 @@ import {ProjectsListComponent} from './projects-list/projects-list.component';
     ProjectFlowchartComponent,
     ProjectFlowchart1Component,
     ProjectFlowchartPopupComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    ExpansionStepsExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ import {ProjectsListComponent} from './projects-list/projects-list.component';
     MatDatepickerModule,
     MatSelectModule,
     MatStepperModule,
+    MatExpansionModule,
     MatSidenavModule,
     HttpClientModule,
    

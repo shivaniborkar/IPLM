@@ -25,6 +25,9 @@ export class ProjectService {
       return this.http.get<Project[]>(this.rootURL+'/Project_Details1/'); 
   }
 
+  refreshListByID(projectID: number):Observable<Project[]>{
+    return this.http.get<Project[]>(this.rootURL+'/Project_Details1/'+projectID +'/'); 
+}
   
 
 }

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Project } from '../model/project.model';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'project-details',
@@ -15,6 +17,7 @@ export class ProjectDetailsComponent implements OnInit {
 errorMessage: string;
 projectIDString : string;
 projectID : number;
+projects: Project[];
 filesToUpload: Array<File>;
 selectedFileNames: string[] = [];
 public isLoadingData: Boolean = false;
@@ -33,7 +36,7 @@ res: Array<string>;
 
 
 
-  constructor(private http: HttpClient, private router: Router,private route: ActivatedRoute) {
+  constructor(private service : ProjectService,private http: HttpClient, private router: Router,private route: ActivatedRoute) {
     this.errorMessage = "";
     this.filesToUpload = [];
     this.selectedFileNames = [];
@@ -139,6 +142,7 @@ res: Array<string>;
    }
 
 
+  
 
   ngOnInit() {
     this.route.paramMap.subscribe(
@@ -154,8 +158,22 @@ res: Array<string>;
                   this.projectID = parseInt(this.projectIDString)
                 }
               }
-            );     
+            );  
+        //this.refreshProjectList();
+        
       }
+
+      refreshProjectList(){
+        this.service. refreshList().subscribe((data:Project[]) =>
+        {
+          this.projects = data;
+                      
+             
+        });
+        }
+
+
+       
 
   onSelectedFile(event) {
     if (event.target.files.lenght > 0) {

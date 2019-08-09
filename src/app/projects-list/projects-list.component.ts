@@ -84,9 +84,10 @@ export class ProjectsListComponent implements OnInit {
       
       
     this.dataSource = new MatTableDataSource(this.projects);
-    this.dataSource.sort = this.sort;
+
     this.dataSource.paginator = this.paginator;
-    
+
+    this.dataSource.sort =  this.sort;
         
         
        
@@ -142,4 +143,6 @@ export class ProjectsListComponent implements OnInit {
     this.router.navigate(['/projects/projectID/'+projectNumber+'/']); 
     this.isProjectSelected = true;
   }
+
+  
 }
