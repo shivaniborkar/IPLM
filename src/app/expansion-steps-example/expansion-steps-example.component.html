@@ -43,13 +43,25 @@
     </mat-expansion-panel-header>
 
     <mat-form-field>
-      <textarea matInput placeholder="First Name and Last Name"></textarea>
+      <!-- <textarea matInput placeholder="First Name and Last Name"></textarea> -->
+      <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                   [removable]="removable" (removed)="remove(fruit)">
+            {{fruit.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Add New Member..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
     </mat-form-field>
 
 
   
     <mat-action-row>
-      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
       <button mat-button color="primary" (click)="nextStep()">Next</button>
     </mat-action-row>
   </mat-expansion-panel>
@@ -60,7 +72,7 @@
         Assign Timeframe
       </mat-panel-title>
       <mat-panel-description>
-        Inform the start date and end date of Task
+        Enter the start date and end date of Task
         <mat-icon>date_range</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
@@ -89,7 +101,7 @@
           Complete the Task
         </mat-panel-title>
         <mat-panel-description>
-          Inform the Name and date
+          Enter the Name and date
           <mat-icon>assignment_turned_in</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>

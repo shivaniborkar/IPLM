@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -96,6 +97,7 @@ import { ExpansionStepsExampleComponent } from './expansion-steps-example/expans
     MatSelectModule,
     MatStepperModule,
     MatExpansionModule,
+    MatChipsModule,
     MatSidenavModule,
     HttpClientModule,
    

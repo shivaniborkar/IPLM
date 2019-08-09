@@ -16,3 +16,8 @@ mat-form-field {
   margin-right: 12px;
 
 }
+
+
+.example-chip-list {
+    width: 100%;
+  }
