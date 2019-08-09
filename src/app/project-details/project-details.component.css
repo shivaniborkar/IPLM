@@ -62,3 +62,14 @@ float: right;
 .button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+
+.mat-raised-button{
+  
+  margin-top: 10px;
+  background-color: #C0C0C0;   
+  border: none;  
+  text-align: center;
+  margin-right: 8px;
+  height: 35px;
+}

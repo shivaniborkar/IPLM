@@ -27,7 +27,7 @@
     </mat-form-field> -->
 
     <mat-action-row>
-      <button mat-button color="primary" (click)="nextStep()">Next</button>
+      <button mat-raised-button  (click)="nextStep()">Next</button>
     </mat-action-row>
   </mat-expansion-panel>
 
@@ -61,8 +61,8 @@
 
   
     <mat-action-row>
-      <button mat-button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
-      <button mat-button color="primary" (click)="nextStep()">Next</button>
+      <button  mat-raised-button  (click)="prevStep()">Previous</button>
+      <button mat-raised-button (click)="nextStep()">Next</button>
     </mat-action-row>
   </mat-expansion-panel>
 
@@ -90,8 +90,8 @@
 
 
     <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Previous</button>
-        <button mat-button color="primary" (click)="nextStep()">Next</button>
+        <button mat-raised-button (click)="prevStep()">Previous</button>
+        <button mat-raised-button (click)="nextStep()">Next</button>
       </mat-action-row>
   </mat-expansion-panel>
 
@@ -118,8 +118,9 @@
   
   
       <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Previous</button>
-        <button mat-button color="primary" (click)="nextStep()">Complete Task</button>
+        <button mat-raised-button (click)="prevStep()">Previous</button>
+
+        <button mat-raised-button (click)="endStep()">Complete Task</button>
       </mat-action-row>
     </mat-expansion-panel>
 

@@ -18,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -42,6 +44,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {DataService} from './services/data.service';
 import {ProjectsListComponent} from './projects-list/projects-list.component';
 import { ExpansionStepsExampleComponent } from './expansion-steps-example/expansion-steps-example.component';
+import { MessageboxComponent } from './messagebox/messagebox.component';
 
 
 /*const appRoutes: Routes = [
@@ -77,7 +80,8 @@ import { ExpansionStepsExampleComponent } from './expansion-steps-example/expans
     ProjectFlowchart1Component,
     ProjectFlowchartPopupComponent,
     ProjectsListComponent,
-    ExpansionStepsExampleComponent
+    ExpansionStepsExampleComponent,
+    MessageboxComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +102,8 @@ import { ExpansionStepsExampleComponent } from './expansion-steps-example/expans
     MatStepperModule,
     MatExpansionModule,
     MatChipsModule,
+    MatButtonModule,
+    MatSnackBarModule,
     MatSidenavModule,
     HttpClientModule,
    
@@ -106,7 +112,8 @@ import { ExpansionStepsExampleComponent } from './expansion-steps-example/expans
 
   ],
   entryComponents: [
-    CreateProjectComponent
+    CreateProjectComponent,
+    MessageboxComponent
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

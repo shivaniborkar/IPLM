@@ -4,6 +4,9 @@ import { FormControl } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 import {MatChipInputEvent} from '@angular/material/chips';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { MatSnackBar } from '@angular/material';
+import { MessageboxComponent } from '../messagebox/messagebox.component';
 
 export interface Fruit {
   name: string;
@@ -16,38 +19,38 @@ export interface Fruit {
 })
 export class ExpansionStepsExampleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
   step = 0;
-  step1=0;
-  showDelay = new FormControl(1000);
-  hideDelay = new FormControl(2000);
+  durationInSeconds = 5;
+  
   
   setStep(index: number) {
     this.step = index;
   }
 
-  setStep1(index1: number) {
-    this.step1 = index1;
-  }
+ 
 
   nextStep() {
     this.step++;
   }
 
-  nextStep1() {
-    this.step1++;
-  }
+  
   prevStep() {
     this.step--;
   }
 
-  prevStep1() {
-    this.step1--;
+  endStep()
+  {
+    this.step++;
+    this._snackBar.openFromComponent(MessageboxComponent, {
+      duration: this.durationInSeconds * 200,
+    });
+   
+   
   }
-
 
 
   visible = true;
